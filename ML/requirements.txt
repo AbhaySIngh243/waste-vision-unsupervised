@@ -1,0 +1,10 @@
+torch>=1.12
+torchvision
+numpy
+scikit-learn
+opencv-python
+Pillow
+tqdm
+flask
+joblib
+matplotlib

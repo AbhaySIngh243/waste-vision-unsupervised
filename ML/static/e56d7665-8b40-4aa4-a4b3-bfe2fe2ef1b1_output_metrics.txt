@@ -1,0 +1,9 @@
+Number of Clusters: 6
+Total Pixels/Patches: 176
+Silhouette Score (Sampled): -0.0602
+
+Cluster Distribution:
+Cluster 1: 4 (2.3%)
+Cluster 3: 32 (18.2%)
+Cluster 4: 7 (4.0%)
+Cluster 5: 133 (75.6%)

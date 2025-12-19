@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Analysis Results - Waste Clustering</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        .header {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            text-align: center;
+        }
+        .header h1 {
+            color: #333;
+            margin-bottom: 10px;
+        }
+        .back-btn {
+            display: inline-block;
+            padding: 10px 30px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            margin-top: 15px;
+            transition: transform 0.2s;
+        }
+        .back-btn:hover { transform: scale(1.05); }
+        
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+            gap: 30px;
+            max-width: 1800px;
+            margin: 0 auto;
+        }
+        .card {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+        .card h2 {
+            color: #667eea;
+            margin-bottom: 15px;
+            font-size: 1.5em;
+            border-bottom: 3px solid #667eea;
+            padding-bottom: 10px;
+        }
+        .card img {
+            width: 100%;
+            border-radius: 10px;
+            margin-top: 15px;
+        }
+        .metrics-card {
+            grid-column: 1 / -1;
+        }
+        .metrics-content {
+            background: #f8f9ff;
+            padding: 20px;
+            border-radius: 10px;
+            font-family: 'Courier New', monospace;
+            white-space: pre-wrap;
+            color: #333;
+            max-height: 600px;
+            overflow-y: auto;
+        }
+        .highlight {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+            padding: 2px 8px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1> Clustering Analysis Results</h1>
+        <p style="color: #666; margin-top: 10px;">Complete visualization and metrics dashboard</p>
+        <a href="/" class="back-btn">⬅ Upload Another Image</a>
+    </div>
+    
+    <div class="grid">
+        <!-- Overlay Result -->
+        {% if visualizations.overlay %}
+        <div class="card">
+            <h2> Cluster Overlay</h2>
+            <img src="data:image/png;base64,{{ visualizations.overlay }}" alt="Cluster Overlay">
+        </div>
+        {% endif %}
+        
+        <!-- Legend -->
+        {% if visualizations.legend %}
+        <div class="card">
+            <h2> Cluster Legend</h2>
+            <img src="data:image/png;base64,{{ visualizations.legend }}" alt="Legend">
+        </div>
+        {% endif %}
+        
+        <!-- Distribution -->
+        {% if visualizations.distribution %}
+        <div class="card">
+            <h2> Cluster Distribution</h2>
+            <img src="data:image/png;base64,{{ visualizations.distribution }}" alt="Distribution">
+        </div>
+        {% endif %}
+        
+        <!-- Pie Chart -->
+        {% if visualizations.pie %}
+        <div class="card">
+            <h2> Percentage Distribution</h2>
+            <img src="data:image/png;base64,{{ visualizations.pie }}" alt="Pie Chart">
+        </div>
+        {% endif %}
+        
+        <!-- Silhouette -->
+        {% if visualizations.silhouette %}
+        <div class="card">
+            <h2> Silhouette Analysis</h2>
+            <img src="data:image/png;base64,{{ visualizations.silhouette }}" alt="Silhouette">
+        </div>
+        {% endif %}
+        
+        <!-- PCA -->
+        {% if visualizations.pca %}
+        <div class="card">
+            <h2> PCA Projection</h2>
+            <img src="data:image/png;base64,{{ visualizations.pca }}" alt="PCA">
+        </div>
+        {% endif %}
+        
+        <!-- t-SNE -->
+        {% if visualizations.tsne %}
+        <div class="card">
+            <h2> t-SNE Projection</h2>
+            <img src="data:image/png;base64,{{ visualizations.tsne }}" alt="t-SNE">
+        </div>
+        {% endif %}
+        
+        <!-- Heatmap -->
+        {% if visualizations.heatmap %}
+        <div class="card">
+            <h2> Cluster Centers Heatmap</h2>
+            <img src="data:image/png;base64,{{ visualizations.heatmap }}" alt="Heatmap">
+        </div>
+        {% endif %}
+        
+        <!-- Elbow -->
+        {% if visualizations.elbow %}
+        <div class="card">
+            <h2> Elbow Method</h2>
+            <img src="data:image/png;base64,{{ visualizations.elbow }}" alt="Elbow">
+        </div>
+        {% endif %}
+        
+        <!-- Metrics -->
+        {% if metrics %}
+        <div class="card metrics-card">
+            <h2> Clustering Metrics Summary</h2>
+            <div class="metrics-content">{{ metrics }}</div>
+        </div>
+        {% endif %}
+    </div>
+    
+    <div style="height: 50px;"></div>
+</body>
+</html>
